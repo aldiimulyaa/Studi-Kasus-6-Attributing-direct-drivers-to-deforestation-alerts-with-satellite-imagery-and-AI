@@ -9,10 +9,8 @@ print(" Mata Kuliah: Informatics Practitioner Lecture Series 2026")
 print(" Penyusun   : Aldi Mulya Fajar (G1A025091 - S1 Informatika UNIB)")
 print("==================================================================\n")
 
-# 1. Dataset Simulasi Peringatan Dini Deforestasi & Fitur Spasial
 print("[INFO] Tahap 1: Memuat Data Indikator Spasial & Peringatan Dini Hutan...")
 
-# Kelas Penyebab Deforestasi
 class_names = [
     "Pertanian Skala Kecil", 
     "Pertanian Skala Besar", 
@@ -21,7 +19,6 @@ class_names = [
     "Kebakaran Hutan"
 ]
 
-# Data Sampel Peringatan Dini (Simulasi Fitur Citra Radar Sentinel-1 & Optik Sentinel-2)
 alerts_data = [
     {"id": "ALT-101", "region": "Asia Tenggara (Bengkulu)", "driver_pred": "Pertanian Skala Kecil", "confidence": 0.92, "area_ha": 2.5},
     {"id": "ALT-102", "region": "Amerika Selatan (Amazon)", "driver_pred": "Pertanian Skala Besar", "confidence": 0.97, "area_ha": 150.0},
@@ -37,7 +34,6 @@ for alert in alerts_data:
     print(f"  - Estimasi Luas Gangguan      : {alert['area_ha']} Hektar")
     print("-" * 66)
 
-# 2. Rekapitulasi Statistik Klasifikasi Penyebab Deforestasi
 print("\n[INFO] Tahap 2: Evaluasi Distribusi Penyebab Deforestasi Global...")
 total_area_affected = sum(item["area_ha"] for item in alerts_data)
 
@@ -50,7 +46,6 @@ for driver, area in summary_by_driver.items():
     percentage = (area / total_area_affected) * 100
     print(f"  * {driver}: {area} Hektar ({percentage:.1f}% dari total gangguan)")
 
-# 3. Menyusun Laporan Format JSON untuk Integrasi Platform Global Nature Watch
 evaluation_report = {
     "metadata": {
         "project_title": "AI-Based Deforestation Driver Classification Report",
